@@ -10,18 +10,18 @@ import { BlogService } from '../blog.service';
 })
 export class BlogPostUpdateComponent {
   blogPostForUpdate: BlogPost;
-  postId: number;
+  postId: string;
   
   constructor(private service: BlogService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.postId = +params['id'];
+      this.postId = params['id'];
       this.getById(this.postId);
     });
   }
 
-  getById(blogPostId: number): void{
+  getById(blogPostId: string): void{
     this.service.getById(blogPostId).subscribe({
       next: (result: BlogPost) => {
         this.blogPostForUpdate = result;

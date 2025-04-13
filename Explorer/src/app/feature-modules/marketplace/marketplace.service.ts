@@ -45,7 +45,7 @@ export class MarketplaceService {
 
   getGuideReviews(): Observable<PagedResults<GuideReview>> {
     return this.http.get<PagedResults<GuideReview>>(
-      'https://localhost:44333/api/review/guideReview'
+      'http://localhost:4200/api/review/guideReview'
     );
   }
 
@@ -343,28 +343,28 @@ export class MarketplaceService {
 
   getPublishedTours(): Observable<PagedResults<Tour>> {
     return this.http.get<PagedResults<Tour>>(
-      'https://localhost:44333/api/marketplace'
+      'http://localhost:4200/api/marketplace'
     );
   }
   getSelectedTour(id: number): Observable<Tour> {
-    return this.http.get<Tour>('https://localhost:44333/api/marketplace/selectedTour/' + id);
+    return this.http.get<Tour>('http://localhost:4200/api/marketplace/selectedTour/' + id);
   } 
 
   getShoppingCart(touristId: number): Observable<ShoppingCart>{
-    return this.http.get<ShoppingCart>('https://localhost:44333/api/shoppingcart/'+touristId);
+    return this.http.get<ShoppingCart>('http://localhost:4200/api/shoppingcart/'+touristId);
   }
 
   removeOrderItem(cartId: number, tourId: number): Observable<ShoppingCart> {
-    const url = `https://localhost:44333/api/shoppingcart/${cartId}/${tourId}`;
+    const url = `http://localhost:4200/api/shoppingcart/${cartId}/${tourId}`;
     return this.http.put<ShoppingCart>(url, null);
   }
   
   addOrderItem(shoppingCart: ShoppingCart): Observable<ShoppingCart>{
-    return this.http.put<ShoppingCart>('https://localhost:44333/api/marketplace/buy', shoppingCart);
+    return this.http.put<ShoppingCart>('http://localhost:4200/api/marketplace/buy', shoppingCart);
   }
 
   purchase(cartId: number): Observable<ShoppingCart> {
-    const url = `https://localhost:44333/purchase/${cartId}`;
+    const url = `http://localhost:4200/purchase/${cartId}`;
     return this.http.put<ShoppingCart>(url, null);
   }
   getTourByTourId(id: number): Observable<Tour> {
@@ -413,12 +413,12 @@ export class MarketplaceService {
   }
   /*getCouponByCodeAndTourId(code: string, tourId: number): Observable<Coupon> {
     const params = { tourId: tourId.toString(), code: code };
-    return this.http.get<Coupon>('https://localhost:44333/api/authoring/coupon/getByCode', {params: params});
+    return this.http.get<Coupon>('http://localhost:4200/api/authoring/coupon/getByCode', {params: params});
   }*/
 
   getCouponByCode(code: string): Observable<Coupon> {
     const params = { code: code };
-    return this.http.get<Coupon>('https://localhost:44333/api/authoring/coupon/getByCode', {params: params});
+    return this.http.get<Coupon>('http://localhost:4200/api/authoring/coupon/getByCode', {params: params});
   }
 
   updateShoppingCart(cart: ShoppingCart): Observable<ShoppingCart> {

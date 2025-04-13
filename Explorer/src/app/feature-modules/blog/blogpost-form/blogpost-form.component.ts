@@ -72,7 +72,7 @@ export class BlogpostFormComponent implements OnChanges,OnInit {
 
 
     const blogPost = {
-      id: 0,
+      id: "asd",
       authorId: this.tokenStorage.getUserId() || 0,
       tourId:this.tourId,
       authorUsername: null,
@@ -84,6 +84,7 @@ export class BlogpostFormComponent implements OnChanges,OnInit {
       ratings: [],
       status: 'PUBLISHED'
     }
+    console.log(blogPost)
     this.selectedEquipment.forEach(e => {
       console.log("Opis " +e.description);
     });
@@ -113,7 +114,7 @@ export class BlogpostFormComponent implements OnChanges,OnInit {
 
 
     const blogPost = {
-      id: 0,
+      id: "asdsad",
       authorId: this.tokenStorage.getUserId() || 0,
       tourId:0,
       authorUsername: null,
@@ -161,6 +162,7 @@ export class BlogpostFormComponent implements OnChanges,OnInit {
 
     this.service.updateBlogPost(blogPost).subscribe({
       next: (_) => {
+        console.log("AAAA")
         this.blogPostsUpdated.emit();
         this.router.navigate(['/blog']);
       }

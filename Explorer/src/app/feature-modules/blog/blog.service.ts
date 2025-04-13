@@ -15,10 +15,10 @@ export class BlogService {
   constructor(private http: HttpClient) { }
 
   getBlogPosts(): Observable<PagedResults<BlogPost>> {
-    return this.http.get<PagedResults<BlogPost>>('https://localhost:44333/api/blog/blogpost');
+    return this.http.get<PagedResults<BlogPost>>('http://localhost:4200/api/blog/blogpost');
   }
 
-  getById(blogPostId: number): Observable<BlogPost> {
+  getById(blogPostId: string): Observable<BlogPost> {
     return this.http.get<BlogPost>(environment.apiHost + 'blog/blogpost/' + blogPostId);
   }
 
@@ -33,16 +33,16 @@ export class BlogService {
   deleteBlogPost(blogPost: BlogPost): Observable<BlogPost>{
     return this.http.delete<BlogPost>(environment.apiHost + 'blog/blogpost/' + blogPost.id);
   }
-  addRating(id: number, rating: BlogPostRating): Observable<BlogPost>{
+  addRating(id: string, rating: BlogPostRating): Observable<BlogPost>{
     return this.http.post<BlogPost>(environment.apiHost + 'blog/blogpost/' + id + '/ratings', rating);
   }
-  removeRating(blogId: number, userId: number): Observable<BlogPost>{
+  removeRating(blogId: string, userId: number): Observable<BlogPost>{
     return this.http.delete<BlogPost>(environment.apiHost + 'blog/blogpost/' + blogId + '/ratings/' + userId );
   }
-  addComment(id: number, comment: BlogPostComment): Observable<BlogPost> {
+  addComment(id: string, comment: BlogPostComment): Observable<BlogPost> {
     return this.http.post<BlogPost>(environment.apiHost + 'blog/blogpost/' + id + '/comments', comment);
   }
-  deleteComment(blogId: number, userId:number, dateTime: Date):Observable<BlogPost> {
+  deleteComment(blogId: string, userId:number, dateTime: Date):Observable<BlogPost> {
     console.log(userId);
     const dateObj = typeof dateTime === 'string' ? new Date(dateTime) : dateTime;
     console.log('Pre formatiranja:', dateObj);
@@ -53,7 +53,7 @@ export class BlogService {
     
     return this.http.delete<BlogPost>(environment.apiHost + 'blog/blogpost/' +  blogId + '/comments/' + userId + '/' + formattedDateTime );
   }
-  updateComment(blogId:number, comment:BlogPostComment):Observable<BlogPost> {
+  updateComment(blogId:string, comment:BlogPostComment):Observable<BlogPost> {
     return this.http.put<BlogPost>(environment.apiHost + 'blog/blogpost/' + blogId + '/comments', comment);
   }
 }

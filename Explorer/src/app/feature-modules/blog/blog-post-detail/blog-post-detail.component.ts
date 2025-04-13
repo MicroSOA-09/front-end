@@ -13,7 +13,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./blog-post-detail.component.css']
 })
 export class BlogPostDetailComponent implements OnInit {
-  postId: number;
+  postId: string;
   post: BlogPost;
   @Output() postUpdated = new EventEmitter<null>();
   
@@ -29,12 +29,12 @@ export class BlogPostDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.postId = +params['id'];
+      this.postId = params['id'];
       this.getById(this.postId);
     });
   }
 
-  getById(blogPostId: number): void{
+  getById(blogPostId: string): void{
     this.service.getById(blogPostId).subscribe({
       next: (result: BlogPost) => {
         this.post = result;
@@ -200,7 +200,7 @@ export class BlogPostDetailComponent implements OnInit {
   addComment(): void {
     const comment: BlogPostComment= {
       userId: this.tokenStorage.getUserId() || 0 ,
-      username: null || "",
+      username: "",
       blogId: this.post.id,
       text: this.commentForm.value.text || "",
       creationTime: new Date(),
