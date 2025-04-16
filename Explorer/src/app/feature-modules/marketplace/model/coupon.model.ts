@@ -5,5 +5,5 @@ export interface Coupon{
     expirationDate: Date,
     tourId: number,
     touristId: string,
-    authorId: string
+    AuthorId: string
 }

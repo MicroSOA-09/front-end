@@ -60,7 +60,7 @@ export class PublicTourPointRequestComponent implements OnInit {
         this.bindingList.length = 0; //ovo dodajte i u reject request
         this.getAllRequests();       // i ovo
         const notification: RequestResponseNotification = {
-          authorId: request.authorId,
+          AuthorId: request.AuthorId,
           comment: comment || "Zahtev za kreiranje javne tacke je prihvacen",
           creation: new Date 
         }
@@ -78,7 +78,7 @@ export class PublicTourPointRequestComponent implements OnInit {
         this.bindingList.length = 0; //ovo dodajte i u reject request
         this.getAllRequests();       // i ovo
         const notification: RequestResponseNotification = {
-          authorId: request.authorId,
+          AuthorId: request.AuthorId,
           comment: comment || "Zahtev za kreiranje javne tacke je odbijen",
           creation: new Date 
         }
@@ -100,7 +100,7 @@ export class PublicTourPointRequestComponent implements OnInit {
   }
 
   getRequestsAuthors(): void {
-    const observables = this.requests.map(request => this.adminService.getAuthorById(request.authorId));
+    const observables = this.requests.map(request => this.adminService.getAuthorById(request.AuthorId));
 
     forkJoin(observables).subscribe((results: User[]) => {
       this.authors = results;
@@ -113,7 +113,7 @@ export class PublicTourPointRequestComponent implements OnInit {
     console.log("Usao");
     this.requests.forEach(request => {
       const tp = this.tourPointsInRequests.find(tp => tp.id === request.tourPointId);
-      const author = this.authors.find(author => +author.id == request.authorId);
+      const author = this.authors.find(author => +author.id == request.AuthorId);
 
       if (tp && author) {
         console.log("Pronađeni su odgovarajući podaci za zahtjev", request.id);

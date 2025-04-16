@@ -67,7 +67,7 @@ export class BlogPostDetailComponent implements OnInit {
   checkRating():void {
     if(this.post.ratings != null) {
        for (const rating of this.post.ratings) {
-        if(rating.userId == this.tokenStorage.getUserId()) {
+        if(rating.AuthorId == this.tokenStorage.getUserId()) {
           if(rating.isPositive) {
             this.isUpvoted = true;
             this.isDownvoted = false;
@@ -103,7 +103,7 @@ export class BlogPostDetailComponent implements OnInit {
 
     // Implement your save logic here
     // You can update the original comment in the comments array or send it to a service
-    this.service.updateComment(this.post.id, editedCommentCopy).subscribe({
+    this.service.updateComment(this.post.id || "", editedCommentCopy).subscribe({
       next: (_) => {
         // Refresh the comments after saving changes
         this.ngOnInit();
@@ -121,7 +121,7 @@ export class BlogPostDetailComponent implements OnInit {
   upvote() {
     if(this.isUpvoted) {
       this.isUpvoted = false;
-      this.service.removeRating(this.post.id,this.tokenStorage.getUserId()).subscribe({
+      this.service.removeRating(this.post.id || "",this.tokenStorage.getUserId()).subscribe({
         next: () => { this.ngOnInit(); }
       });
     }
@@ -129,11 +129,11 @@ export class BlogPostDetailComponent implements OnInit {
       this.isUpvoted = true;
       this.isDownvoted = false;
       const rating: BlogPostRating = {
-        userId: this.tokenStorage.getUserId(),
+        AuthorId: this.tokenStorage.getUserId(),
         creationTime: new Date(),
         isPositive: true,
       }
-      this.service.addRating(this.post.id, rating).subscribe({
+      this.service.addRating(this.post.id || "", rating).subscribe({
         next: () => { this.ngOnInit(); }
       });
     }
@@ -142,7 +142,7 @@ export class BlogPostDetailComponent implements OnInit {
   downvote() {
     if(this.isDownvoted) {
       this.isDownvoted = false;
-      this.service.removeRating(this.post.id, this.tokenStorage.getUserId()).subscribe({
+      this.service.removeRating(this.post.id || "", this.tokenStorage.getUserId()).subscribe({
         next: () => { this.ngOnInit(); }
       });
     }
@@ -150,11 +150,11 @@ export class BlogPostDetailComponent implements OnInit {
       this.isUpvoted = false;
       this.isDownvoted = true;
       const rating: BlogPostRating = {
-        userId: this.tokenStorage.getUserId(),
+        AuthorId: this.tokenStorage.getUserId(),
         creationTime: new Date(),
         isPositive: false,
       }
-      this.service.addRating(this.post.id, rating).subscribe({
+      this.service.addRating(this.post.id || "", rating).subscribe({
         next: () => { this.ngOnInit(); }
       });
     }
@@ -199,14 +199,14 @@ export class BlogPostDetailComponent implements OnInit {
   
   addComment(): void {
     const comment: BlogPostComment= {
-      userId: this.tokenStorage.getUserId(),
-      username: "",
-      blogId: this.post.id,
+      AuthorId: this.tokenStorage.getUserId(),
+      authorUsername: "",
+      blogId: this.post.id || "",
       text: this.commentForm.value.text || "",
       creationTime: new Date(),
       lastUpdatedTime: new Date(), 
     }
-    this.service.addComment(this.post.id, comment).subscribe({
+    this.service.addComment(this.post.id || "", comment).subscribe({
       next: () => { this.ngOnInit(); }
     })
     this.commentForm.reset();
@@ -221,7 +221,7 @@ export class BlogPostDetailComponent implements OnInit {
     console.log(dateTime);
     console.log(this.post.id);
     
-    this.service.deleteComment(this.post.id, userId, dateTime).subscribe({
+    this.service.deleteComment(this.post.id || "", userId, dateTime).subscribe({
       next: () => {
         this.ngOnInit();
       }

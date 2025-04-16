@@ -6,7 +6,7 @@ export enum Status {
 
 export interface TourPointRequest {
     id: number,
-    authorId: number,
+    AuthorId: number,
     tourPointId: number,
     status: Status
 }

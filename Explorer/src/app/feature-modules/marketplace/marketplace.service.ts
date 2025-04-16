@@ -400,9 +400,9 @@ export class MarketplaceService {
     ); 
   }
 
-  getPubToursForAut(authorId: number): Observable<PagedResults<Tour>> {
+  getPubToursForAut(AuthorId: number): Observable<PagedResults<Tour>> {
     return this.http.get<PagedResults<Tour>>(
-      environment.apiHost + 'administration/tour/sales/' + authorId
+      environment.apiHost + 'administration/tour/sales/' + AuthorId
     ); 
   }
 
@@ -433,8 +433,8 @@ export class MarketplaceService {
     return this.http.post<Coupon>(environment.apiHost + 'authoring/coupon', coupon)
   }
 
-  getCouponsByAuthor(authorId: string): Observable<Coupon[]> {
-    return this.http.get<Coupon[]>(environment.apiHost + 'authoring/coupon/' + authorId.toString())
+  getCouponsByAuthor(AuthorId: string): Observable<Coupon[]> {
+    return this.http.get<Coupon[]>(environment.apiHost + 'authoring/coupon/' + AuthorId.toString())
   }
 
 }

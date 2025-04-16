@@ -15,7 +15,7 @@ export class CouponFormComponent implements OnInit{
 
   couponForm: FormGroup;
   tour: Tour = {} as Tour;
-  authorId: string
+  AuthorId: string
   minDate: Date
 
   constructor(private formBuilder: FormBuilder,private marketplaceService: MarketplaceService, private auth: AuthService,private route: ActivatedRoute, private router: Router){}
@@ -50,7 +50,7 @@ export class CouponFormComponent implements OnInit{
   getLogedUser(): void{
     this.auth.user$.subscribe((user) => {
       if (user.username) {
-       this.authorId = user.id
+       this.AuthorId = user.id
       }
     });
   }
@@ -68,7 +68,7 @@ export class CouponFormComponent implements OnInit{
         expirationDate: expirationDateControl.value,
         tourId: tourId,
         touristId: "0",
-        authorId: this.authorId, // replace with the actual author ID
+        AuthorId: this.AuthorId, // replace with the actual author ID
       };
 
       this.marketplaceService.createCoupon(coupon).subscribe({

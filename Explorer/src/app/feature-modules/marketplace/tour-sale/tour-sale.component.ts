@@ -217,7 +217,7 @@ export class TourSaleComponent {
     }
 
     const tourSale: TourSale = {
-      authorId: this.user,
+      AuthorId: this.user,
       startDate: this.tourSaleForm1.value.date1
         ? new Date(this.tourSaleForm1.value.date1)
         : new Date(Date.now()),
@@ -327,7 +327,7 @@ export class TourSaleComponent {
     }
 
     const tourSale: TourSale = {
-      authorId: this.user,
+      AuthorId: this.user,
       startDate: this.tourSaleForm3.value.date1
         ? new Date(this.tourSaleForm3.value.date1)
         : new Date(Date.now()),

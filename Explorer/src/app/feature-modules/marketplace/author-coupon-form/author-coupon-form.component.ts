@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class AuthorCouponFormComponent  implements OnInit{
 
   couponForm: FormGroup;
-  authorId: string
+  AuthorId: string
   minDate: Date
 
   constructor(private formBuilder: FormBuilder,private marketplaceService: MarketplaceService, private auth: AuthService, private router: Router){}
@@ -38,7 +38,7 @@ export class AuthorCouponFormComponent  implements OnInit{
   getLogedUser(): void{
     this.auth.user$.subscribe((user) => {
       if (user.username) {
-       this.authorId = user.id
+       this.AuthorId = user.id
       }
     });
   }
@@ -49,7 +49,7 @@ export class AuthorCouponFormComponent  implements OnInit{
   
     if (discountControl?.valid && expirationDateControl?.valid) {
 
-      this.marketplaceService.getCouponsByAuthor(this.authorId).subscribe({
+      this.marketplaceService.getCouponsByAuthor(this.AuthorId).subscribe({
         next: (result: Coupon[]) => {
           for (const coupon of result) {
             if(coupon.tourId === -1) {
@@ -65,7 +65,7 @@ export class AuthorCouponFormComponent  implements OnInit{
             expirationDate: expirationDateControl.value,
             tourId: -1,
             touristId: "0",
-            authorId: this.authorId, // replace with the actual author ID
+            AuthorId: this.AuthorId, // replace with the actual author ID
           };
     
           this.marketplaceService.createCoupon(coupon).subscribe({

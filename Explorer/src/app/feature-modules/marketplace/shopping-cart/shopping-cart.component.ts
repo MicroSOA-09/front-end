@@ -185,7 +185,7 @@ export class ShoppingCartComponent {
         }
 
         if(coupon.tourId === -1) {
-          this.tourService.getTourByGuide(coupon.authorId, 1, 100).subscribe({
+          this.tourService.getTourByGuide(coupon.AuthorId, 1, 100).subscribe({
             next: (result: PagedResults<Tour>) => {
               if(!result || result.totalCount === 0){
                 alert("The coupon you entered does not belong to the author of this tour!")

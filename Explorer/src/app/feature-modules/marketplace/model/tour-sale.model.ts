@@ -1,6 +1,6 @@
 export interface TourSale {
     id?: number;
-    authorId: number;
+    AuthorId: number;
     startDate: Date;
     endDate: Date;
     salePercentage: number;

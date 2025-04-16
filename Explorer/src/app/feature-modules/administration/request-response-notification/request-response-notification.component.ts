@@ -24,8 +24,8 @@ export class RequestResponseNotificationComponent implements OnInit{
     this.getNotifications();
   }
   getNotifications(): void {
-    const authorId = this.tokenStorage.getUserId();
-    this.service.getNotificationsByAuthorId(authorId).subscribe({
+    const AuthorId = this.tokenStorage.getUserId();
+    this.service.getNotificationsByAuthorId(AuthorId).subscribe({
       next: (result: PagedResults<RequestResponseNotification>) => {
         this.requestResponseNotification = result.results;
         console.log('Notifications:', this.requestResponseNotification);

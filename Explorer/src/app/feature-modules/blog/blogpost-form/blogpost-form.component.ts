@@ -72,8 +72,7 @@ export class BlogpostFormComponent implements OnChanges,OnInit {
 
 
     const blogPost = {
-      id: "asd",
-      authorId: this.tokenStorage.getUserId(),
+      AuthorId: this.tokenStorage.getUserId(),
       tourId:this.tourId,
       authorUsername: null,
       title: this.blogPostForm.value.title || '',
@@ -114,8 +113,7 @@ export class BlogpostFormComponent implements OnChanges,OnInit {
 
 
     const blogPost = {
-      id: "asdsad",
-      authorId: this.tokenStorage.getUserId(),
+      AuthorId: this.tokenStorage.getUserId(),
       tourId:0,
       authorUsername: null,
       title: this.blogPostForm.value.title || '',
@@ -148,7 +146,7 @@ export class BlogpostFormComponent implements OnChanges,OnInit {
 
       const blogPost = {
         id: this.blogPost.id,
-        authorId: this.blogPost.authorId,
+        AuthorId: this.blogPost.AuthorId,
         tourId:0,
         authorUsername: this.blogPost.authorUsername,
         title: this.blogPostForm.value.title || '',
@@ -181,7 +179,7 @@ export class BlogpostFormComponent implements OnChanges,OnInit {
 
     const blogPost = {
       id: this.blogPost.id,
-      authorId: this.blogPost.authorId,
+      AuthorId: this.blogPost.AuthorId,
       tourId:0,
       authorUsername: this.blogPost.authorUsername,
       title: this.blogPostForm.value.title || '',

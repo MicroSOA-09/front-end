@@ -77,8 +77,8 @@ export class AdministrationService {
     return this.http.post<AppRating>(environment.apiHost + 'administration/app-ratings', rating);
   }
 
-  sendPublicTourPointrequest(tourPointId:number, authorId:string): Observable<TourPointRequest>{
-    return this.http.post<TourPointRequest>(environment.apiHost + 'tourist/publicTourPointRequest/createRequest/' + tourPointId + '/' + authorId, null);
+  sendPublicTourPointrequest(tourPointId:number, AuthorId:string): Observable<TourPointRequest>{
+    return this.http.post<TourPointRequest>(environment.apiHost + 'tourist/publicTourPointRequest/createRequest/' + tourPointId + '/' + AuthorId, null);
   }
   addUserPosition(position: UserPosition): Observable<UserPosition>{
     return this.http.post<UserPosition>(environment.apiHost+'administration/userPosition',position);
@@ -110,8 +110,8 @@ export class AdministrationService {
   getAuthorById(id:number): Observable<User> {
     return this.http.get<User>(environment.apiHost + `user/getById/` +id);
   }
-  getNotificationsByAuthorId(authorId:string): Observable<PagedResults<RequestResponseNotification>>{
-    return this.http.get<PagedResults<RequestResponseNotification>>(environment.apiHost + 'administration/requestResponseNotification/' + authorId);
+  getNotificationsByAuthorId(AuthorId:string): Observable<PagedResults<RequestResponseNotification>>{
+    return this.http.get<PagedResults<RequestResponseNotification>>(environment.apiHost + 'administration/requestResponseNotification/' + AuthorId);
   }
   addNotification(notification: RequestResponseNotification): Observable<RequestResponseNotification> {
     console.log(notification.comment);

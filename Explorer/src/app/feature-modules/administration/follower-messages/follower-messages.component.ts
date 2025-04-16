@@ -22,8 +22,8 @@ export class FollowerMessagesComponent implements OnInit{
   }
 
   getMessages(): void {
-    const authorId = this.tokenStorage.getUserId();
-    this.service.getMessagesByFollowerId(authorId).subscribe({
+    const AuthorId = this.tokenStorage.getUserId();
+    this.service.getMessagesByFollowerId(AuthorId).subscribe({
       next: (result: FollowerMessage[]) => {
         this.messages = result;
         //console.log('Messages:', this.messages);

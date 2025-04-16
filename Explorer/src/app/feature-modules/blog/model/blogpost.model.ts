@@ -2,8 +2,8 @@ import { BlogPostComment } from "./blog-post-comment.model"
 import { BlogPostRating } from "./blog-post-rating.model"
 
 export interface BlogPost {
-    id: string,
-    authorId: string,
+    id?: string,
+    AuthorId: string,
     tourId:number,
     authorUsername: string | null,
     title: string,
