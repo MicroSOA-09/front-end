@@ -13,7 +13,7 @@ export class GuideReviewFormComponent implements OnChanges{
   @Output() guideReviewUpdated = new EventEmitter<null>();
   @Input() guideRev: GuideReview;
   @Input() shouldEdit: boolean = false;
-  @Input() user: number;
+  @Input() user: string;
 
   constructor(private service: MarketplaceService) { }
 
@@ -43,7 +43,7 @@ export class GuideReviewFormComponent implements OnChanges{
 
     const guideReview: GuideReview = {
       userId: this.user,
-      guideId: 3,//todo
+      guideId: "3",//todo
       rating: this.selectedRating || 0,
       comment: this.guideReviewForm.value.comment || '',
       submissionDate:new Date(Date.now())
@@ -62,7 +62,7 @@ export class GuideReviewFormComponent implements OnChanges{
   updateGuideReview(): void {
     const guideReview: GuideReview = {
       userId: this.user,
-      guideId: 3,//todo
+      guideId: "3",//todo
       rating: this.selectedRating || 0,
       comment: this.guideReviewForm.value.comment || '',
       submissionDate:new Date(Date.now())

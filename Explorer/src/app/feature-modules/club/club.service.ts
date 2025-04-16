@@ -12,7 +12,7 @@ export class ClubService {
 
   constructor(private http: HttpClient) { }
 
-  getClubsByOwner(userId: number): Observable<PagedResults<Club>>{
+  getClubsByOwner(userId: string): Observable<PagedResults<Club>>{
     return this.http.get<PagedResults<Club>>(environment.apiHost + 'club/club/' + userId);
   }
   addClub(club: Club): Observable<Club>{

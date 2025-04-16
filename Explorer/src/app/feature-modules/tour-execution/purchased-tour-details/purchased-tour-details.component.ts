@@ -13,14 +13,14 @@ import { AuthService } from 'src/app/infrastructure/auth/auth.service';
 export class PurchasedTourDetailsComponent implements OnInit{
 
   tour: Tour = {} as Tour;
-  touristId: number
+  touristId: string
 
   constructor(private marketplaceService: MarketplaceService, private auth: AuthService, private executionService: TourExecutionService, private route: ActivatedRoute, private router: Router){}
 
   ngOnInit(): void {
     this.getLogedUser()
-    const tourId = +this.route.snapshot.paramMap.get('id')!;
-    this.marketplaceService.getSelectedTour(tourId).subscribe({
+    const tourId = this.route.snapshot.paramMap.get('id')!;
+    this.marketplaceService.getSelectedTour(+tourId).subscribe({
       next: (result: Tour)=>{
         this.tour = result;
         console.log(this.tour.price);

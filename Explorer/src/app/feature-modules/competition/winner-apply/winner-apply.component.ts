@@ -18,13 +18,13 @@ interface ExtendedCompetitionApply extends CompetitionApply {
 })
 export class WinnerApplyComponent implements OnInit {
 
-  competitionId: number | 0;
+  competitionId: string;
   competitionApplies: ExtendedCompetitionApply[] = [];
 
   constructor(private route: ActivatedRoute, private competitionService: CompetitionServiceService, private userService: AdministrationService){}
 
   ngOnInit(): void {
-    this.competitionId = +this.route.snapshot.paramMap.get('id')!;
+    this.competitionId = this.route.snapshot.paramMap.get('id')!;
     this.getWinner();
   }
 

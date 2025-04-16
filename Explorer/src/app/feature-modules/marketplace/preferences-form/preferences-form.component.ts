@@ -74,7 +74,7 @@ export class PreferencesFormComponent implements OnChanges {
     this.updateMarks();
 
     const preferences: Preferences = {
-      userId: this.user?.id || -1,
+      userId: this.user?.id || "-1",
       preferredDifficulty: this.preferencesForm.value.preferredDifficulty as DifficultyLevel,
       transportationPreferences: this.transportationMarks,
       interestTags: this.tags

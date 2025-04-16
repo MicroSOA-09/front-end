@@ -15,7 +15,7 @@ export class CouponFormComponent implements OnInit{
 
   couponForm: FormGroup;
   tour: Tour = {} as Tour;
-  authorId: number
+  authorId: string
   minDate: Date
 
   constructor(private formBuilder: FormBuilder,private marketplaceService: MarketplaceService, private auth: AuthService,private route: ActivatedRoute, private router: Router){}
@@ -35,8 +35,8 @@ export class CouponFormComponent implements OnInit{
 
     this.getLogedUser()
     
-    const tourId = +this.route.snapshot.paramMap.get('id')!;
-    this.marketplaceService.getSelectedTour(tourId).subscribe({
+    const tourId = this.route.snapshot.paramMap.get('id')!;
+    this.marketplaceService.getSelectedTour(+tourId).subscribe({
       next: (result: Tour)=>{
         this.tour = result;
         console.log(this.tour.price);
@@ -67,7 +67,7 @@ export class CouponFormComponent implements OnInit{
         discount: discountControl.value,
         expirationDate: expirationDateControl.value,
         tourId: tourId,
-        touristId: 0,
+        touristId: "0",
         authorId: this.authorId, // replace with the actual author ID
       };
 

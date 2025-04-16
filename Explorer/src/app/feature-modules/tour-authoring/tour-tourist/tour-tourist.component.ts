@@ -151,22 +151,22 @@ export class TourTouristComponent implements OnInit {
     });
 
     var tourCharacteristic = {
-      distance: +this.totalDistance.toFixed(2),
+      distance: this.totalDistance.toFixed(2),
       duration: this.totalTime,
       transportType: this.transportType,
     };
 
-    this.service
-      .setTourCharacteristics(this.lastTourId, tourCharacteristic)
-      .subscribe({
-        next: () => {
-          this.showMap = false;
-          alert('Successfully set tour characteristics');
-        },
-        error(err: any) {
-          console.log(tourCharacteristic);
-          console.log(err);
-        },
-      });
+    // this.service
+    //   .setTourCharacteristics(this.lastTourId, tourCharacteristic)
+    //   .subscribe({
+    //     next: () => {
+    //       this.showMap = false;
+    //       alert('Successfully set tour characteristics');
+    //     },
+    //     error(err: any) {
+    //       console.log(tourCharacteristic);
+    //       console.log(err);
+    //     },
+    //   });
   }
 }

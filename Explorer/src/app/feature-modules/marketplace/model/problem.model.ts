@@ -7,8 +7,8 @@ export interface Problem {
     priority: string;
     description: string;
     time: Time;
-    idTourist: number;
-    idGuide: number;
+    idTourist: string;
+    idGuide: string;
     isSolved: boolean;
     deadline: Date;
     idTour: number;

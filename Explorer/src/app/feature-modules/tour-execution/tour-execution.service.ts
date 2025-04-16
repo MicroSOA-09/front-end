@@ -32,12 +32,12 @@ export class TourExecutionService {
 
   
 
-  getById(tourExecutionId: number): Observable<TourExecution> {
+  getById(tourExecutionId: string): Observable<TourExecution> {
     const url = `${environment.apiHost+ 'tourExecution'}/${tourExecutionId}`;
     return this.http.get<TourExecution>(url);
   }
 
-  getByUser(userId: number): Observable<TourExecution>{
+  getByUser(userId: string): Observable<TourExecution>{
     const url = `${environment.apiHost+ 'tourExecution/user'}/${userId}`;
     
     return this.http.get<TourExecution>(url);
@@ -56,7 +56,7 @@ export class TourExecutionService {
     );
   }
 
-  createTourExecution(userId: number, tourId: number | undefined): Observable<TourExecution> {
+  createTourExecution(userId: string, tourId: number | undefined): Observable<TourExecution> {
     return this.http.post<TourExecution>(environment.apiHost + 'tourExecution/create/' + userId + '/' + tourId, null);
   }
 

@@ -1,5 +1,5 @@
 export interface TourPurchaseToken{
     id:number,
-    touristId:number,
+    touristId:string,
     idTour:number
 }

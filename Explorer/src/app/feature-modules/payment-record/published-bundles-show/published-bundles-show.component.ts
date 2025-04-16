@@ -14,7 +14,7 @@ export class PublishedBundlesShowComponent {
 
   publishedBundles: Bundle[]=[];
   bundle : Bundle;
-  loggedInUser:number;
+  loggedInUser:string;
   currency: string[] = ['USD', 'EUR', 'JPY', 'GBP', 'CNY', 'AUD', 'CAD', 'CHF', 'SEK', 'NZD', 'RSD', 'INR'];
   selectedCurrency: string = 'USD';
   previousSelectedCurrency: string;
@@ -51,7 +51,7 @@ export class PublishedBundlesShowComponent {
 
   
   tourBundlePurchase(tourBundleId: number): void {   
-    this.paymentRecordService.tourBundlePurchase(tourBundleId, this.loggedInUser).subscribe({
+    this.paymentRecordService.tourBundlePurchase(tourBundleId, +this.loggedInUser).subscribe({
 
       next:(response)=>{
         console.log('Response', response)

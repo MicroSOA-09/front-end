@@ -6,7 +6,7 @@ export enum DifficultyLevel {
 
 export interface Preferences {
   id?: number;
-  userId: number;
+  userId: string;
   preferredDifficulty: DifficultyLevel;
   transportationPreferences: number[];
   interestTags: string[];

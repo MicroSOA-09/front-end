@@ -1,6 +1,6 @@
 export interface FollowerMessage {
     id: number;
-    userId: number;
+    userId: string;
     followerId: number;
     followerUsername: string;
     message: string;

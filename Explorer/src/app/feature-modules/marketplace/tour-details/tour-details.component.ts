@@ -58,7 +58,7 @@ export class TourDetailsComponent implements OnInit{
         this.service.getShoppingCart(userId).subscribe({
           next: (data: ShoppingCart) => {
             this.shoppingCart = data;
-            this.service.getAllTokensByTourist(userId).subscribe({
+            this.service.getAllTokensByTourist(+userId).subscribe({
               next: (tokens: TourPurchaseToken[]) => {
                 this.tokens = tokens
                 

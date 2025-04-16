@@ -61,11 +61,11 @@ export class AdministrationService {
   }
 
 
-  getProfile(id: number): Observable<Profile>{
+  getProfile(id: string): Observable<Profile>{
     return this.http.get<Profile>('http://localhost:8083/profile/' + id);
   }
 
-  updateProfile(profile: Profile, id: number): Observable<Profile>{
+  updateProfile(profile: Profile, id: string): Observable<Profile>{
     return this.http.put<Profile>('http://localhost:8083/profile/' + id, profile);
   }
 
@@ -77,7 +77,7 @@ export class AdministrationService {
     return this.http.post<AppRating>(environment.apiHost + 'administration/app-ratings', rating);
   }
 
-  sendPublicTourPointrequest(tourPointId:number, authorId:number): Observable<TourPointRequest>{
+  sendPublicTourPointrequest(tourPointId:number, authorId:string): Observable<TourPointRequest>{
     return this.http.post<TourPointRequest>(environment.apiHost + 'tourist/publicTourPointRequest/createRequest/' + tourPointId + '/' + authorId, null);
   }
   addUserPosition(position: UserPosition): Observable<UserPosition>{
@@ -91,7 +91,7 @@ export class AdministrationService {
     );
   }
 
-  getByUserId(userId: number, page: number, pageSize: number): Observable<UserPosition> {
+  getByUserId(userId: string, page: number, pageSize: number): Observable<UserPosition> {
     const params = new HttpParams()
       .set('page', page.toString())
       .set('pageSize', pageSize.toString());
@@ -110,7 +110,7 @@ export class AdministrationService {
   getAuthorById(id:number): Observable<User> {
     return this.http.get<User>(environment.apiHost + `user/getById/` +id);
   }
-  getNotificationsByAuthorId(authorId:Number): Observable<PagedResults<RequestResponseNotification>>{
+  getNotificationsByAuthorId(authorId:string): Observable<PagedResults<RequestResponseNotification>>{
     return this.http.get<PagedResults<RequestResponseNotification>>(environment.apiHost + 'administration/requestResponseNotification/' + authorId);
   }
   addNotification(notification: RequestResponseNotification): Observable<RequestResponseNotification> {
@@ -120,7 +120,7 @@ export class AdministrationService {
   deleteNotification(notification: RequestResponseNotification): Observable<RequestResponseNotification> {
     return this.http.delete<RequestResponseNotification>(environment.apiHost + 'administration/requestResponseNotification/' + notification.id);
   }
-  getTouristXPByID(touristId: Number): Observable<PagedResults<TouristXP>>{
+  getTouristXPByID(touristId: string): Observable<PagedResults<TouristXP>>{
     return this.http.get<PagedResults<TouristXP>>(environment.apiHost + 'tourist/touristXP/' + touristId);
   }
 
@@ -132,11 +132,11 @@ export class AdministrationService {
     return this.http.get<PagedResults<UserMileage>>(environment.apiHost + 'mileage/getAllSortedByMonth');
   }
 
-  getUserMileage(userId: number) : Observable<PagedResults<UserMileage>>{
+  getUserMileage(userId: string) : Observable<PagedResults<UserMileage>>{
     return this.http.get<PagedResults<UserMileage>>(environment.apiHost + 'mileage/getByUser/' + userId);
   }
 
-  getMessagesByFollowerId(followerId: number) : Observable<FollowerMessage[]>{
+  getMessagesByFollowerId(followerId: string) : Observable<FollowerMessage[]>{
     return this.http.get<FollowerMessage[]>(environment.apiHost + 'followerMessage/' + followerId);
   }
 

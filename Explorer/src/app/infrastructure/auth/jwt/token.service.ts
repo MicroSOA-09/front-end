@@ -7,23 +7,23 @@ import { ACCESS_TOKEN, USER } from '../../../shared/constants';
 export class TokenStorage {
   constructor() {}
 
-  saveAccessToken(token: string, userId: number): void {
+  saveAccessToken(token: string, userId: string): void {
     localStorage.removeItem(ACCESS_TOKEN);
     localStorage.removeItem(USER);
     localStorage.setItem(ACCESS_TOKEN, token);
-    localStorage.setItem(USER, userId.toString());
+    localStorage.setItem(USER, userId);
   }
 
   getAccessToken() {
     return localStorage.getItem(ACCESS_TOKEN);
   }
 
-  getUserId() {
+  getUserId(): string {
     const userIdString = localStorage.getItem(USER);
     if (userIdString) {
-      return parseInt(userIdString, 10);
+      return userIdString;
     }
-    return 0;
+    return "";
   }
 
   clear() {

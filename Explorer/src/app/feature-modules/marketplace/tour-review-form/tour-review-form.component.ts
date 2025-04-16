@@ -78,7 +78,7 @@ export class TourReviewFormComponent implements OnInit {
       attendanceDate: new Date(),
       reviewDate: new Date(),
       images: [''],
-      touristId: userId || 0,
+      touristId: userId || "0",
       tourId: this.tourId,
     };
 

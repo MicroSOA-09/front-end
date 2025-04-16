@@ -34,7 +34,7 @@ export class ProblemMessageFormComponent implements OnInit{
       content: this.problemMessageForm.value.content || "",
       isRead: false,
       problemId: this.problem.id || 0,
-      idSender: this.user.id || 0
+      idSender: this.user.id || "0"
     }
 
     this.service.addMessage(problem).subscribe({

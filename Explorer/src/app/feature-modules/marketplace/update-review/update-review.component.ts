@@ -39,12 +39,12 @@ export class UpdateReviewComponent implements OnChanges {
     attendanceDate: new Date(),
     reviewDate: new Date(),
     images: [''],
-    touristId: 10,
+    touristId: "1",
     tourId: 0,
   };
 
   loggedInUser: User = {
-    id: 0,
+    id: "s",
     username: '',
     role: '',
   };

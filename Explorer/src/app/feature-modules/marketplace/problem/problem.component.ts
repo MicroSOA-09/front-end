@@ -144,7 +144,7 @@ export class ProblemComponent implements OnInit {
   }
 
   isThereNewMessages() {
-    this.service.isThereUnreadMessage(this.user.id || 0).subscribe(
+    this.service.isThereUnreadMessage(this.user.id || "0").subscribe(
       (idProblem: number) => {
         this.newMessProbId = idProblem;
       }

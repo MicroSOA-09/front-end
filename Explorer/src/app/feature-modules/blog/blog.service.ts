@@ -36,13 +36,13 @@ export class BlogService {
   addRating(id: string, rating: BlogPostRating): Observable<BlogPost>{
     return this.http.post<BlogPost>(environment.apiHost + 'blog/blogpost/' + id + '/ratings', rating);
   }
-  removeRating(blogId: string, userId: number): Observable<BlogPost>{
+  removeRating(blogId: string, userId: string): Observable<BlogPost>{
     return this.http.delete<BlogPost>(environment.apiHost + 'blog/blogpost/' + blogId + '/ratings/' + userId );
   }
   addComment(id: string, comment: BlogPostComment): Observable<BlogPost> {
     return this.http.post<BlogPost>(environment.apiHost + 'blog/blogpost/' + id + '/comments', comment);
   }
-  deleteComment(blogId: string, userId:number, dateTime: Date):Observable<BlogPost> {
+  deleteComment(blogId: string, userId:string, dateTime: Date):Observable<BlogPost> {
     console.log(userId);
     const dateObj = typeof dateTime === 'string' ? new Date(dateTime) : dateTime;
     console.log('Pre formatiranja:', dateObj);

@@ -19,7 +19,7 @@ import { ShortHiddenLocationEncounter } from '../model/short-hidden-location-enc
 export class ActivatedExecutionComponent implements OnChanges {
   activeEncounter:EncounterExecution;
   encounter: Encounter;
-  userId: number = this.tokenStorage.getUserId();
+  userId: string = this.tokenStorage.getUserId();
   shouldEdit:boolean
   idPosition:number|undefined
   userPosition:UserPosition;
@@ -136,8 +136,8 @@ export class ActivatedExecutionComponent implements OnChanges {
     this.updateUserPosition();
   }
 
-  getEncounterExecutionByUser(userId: number) : void{
-    this.service.getByUser(8);
+  getEncounterExecutionByUser(userId: string) : void{
+    this.service.getByUser("8");
     this.service.getByUser(userId).subscribe(
       (result) => {
         this.activeEncounter = result;

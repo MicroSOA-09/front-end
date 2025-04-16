@@ -14,7 +14,7 @@ export class CompetitionServiceService {
   constructor(private http: HttpClient) {}
 
   getTourByGuide(
-    userId: number,
+    userId: string,
     page: number,
     pageSize: number
   ): Observable<PagedResults<Tour>> {
@@ -32,7 +32,7 @@ export class CompetitionServiceService {
     );
   }
 
-  getAllCompetitionsByAuthorId(id: number): Observable<PagedResults<Competition>> {
+  getAllCompetitionsByAuthorId(id: string): Observable<PagedResults<Competition>> {
     return this.http.get<PagedResults<Competition>>(
       environment.apiHost + 'competition/getAllCompetitionAuthorId/' + id
     );
@@ -48,7 +48,7 @@ export class CompetitionServiceService {
     return this.http.get<PagedResults<CompetitionApply>>(environment.apiHost + 'competitionApply/getApplies/'+ id);
   }
 
-  getWinnersByComp(id: number): Observable<PagedResults<CompetitionApply>>{
+  getWinnersByComp(id: string): Observable<PagedResults<CompetitionApply>>{
     return this.http.get<PagedResults<CompetitionApply>>(environment.apiHost + 'competitionApply/getWinner/'+ id);
   }
 

@@ -4,6 +4,6 @@ export interface Coupon{
     discount: number,
     expirationDate: Date,
     tourId: number,
-    touristId: number,
-    authorId: number
+    touristId: string,
+    authorId: string
 }

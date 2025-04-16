@@ -23,7 +23,7 @@ import { UserPosition } from '../../administration/model/userPosition.model';
 })
 export class ActiveTourComponent implements OnChanges{
   activeTour: TourExecution;
-  userId: number = this.tokenStorage.getUserId();
+  userId: string = this.tokenStorage.getUserId();
   shouldEdit:boolean
   idPosition:number|undefined
   tourId:number=0;
@@ -106,7 +106,7 @@ export class ActiveTourComponent implements OnChanges{
     longitude: new FormControl(0, [Validators.required]),
   });
 
-  getTourExecution(userId: number){
+  getTourExecution(userId: string){
     this.service.getById(userId).subscribe(
       (result) => {
         this.execution = result;
@@ -119,7 +119,7 @@ export class ActiveTourComponent implements OnChanges{
     );
   }
 
-  getTourExecutionByUser(userId: number){
+  getTourExecutionByUser(userId: string){
     this.service.getByUser(userId).subscribe(
       (result) => {
         this.activeTour = result;
@@ -136,7 +136,7 @@ export class ActiveTourComponent implements OnChanges{
     var id = 0;
     const now = new Date();
     const tourExecutionPosition:TourExecutionPosition={
-        tourExecutionId:this.activeTour.id,
+        tourExecutionId: +this.activeTour.id,
         lastActivity:now,
         latitude:0,
         longitude:0
@@ -148,7 +148,7 @@ export class ActiveTourComponent implements OnChanges{
       tourExecutionPosition.longitude = coordinates.lng;
     });
   
-    this.service.updatePosition(this.activeTour.id,this.currentPosition.longitude,this.currentPosition.latitude).subscribe({
+    this.service.updatePosition(+this.activeTour.id,this.currentPosition.longitude,this.currentPosition.latitude).subscribe({
       next: (_) => {
         this.positionUpdated.emit();
       },
@@ -199,7 +199,7 @@ export class ActiveTourComponent implements OnChanges{
   }
 
   updateStatusToAbandoned(): void{
-    this.service.updateStatus(this.activeTour.id,'Abandoned').subscribe(
+    this.service.updateStatus(+this.activeTour.id,'Abandoned').subscribe(
       ()=>{
         console.log('Great');
       }
@@ -220,7 +220,7 @@ export class ActiveTourComponent implements OnChanges{
   }
 
   getTourExecutionPoints(): void{
-    this.service.getPointsByExecution(this.userId).subscribe(
+    this.service.getPointsByExecution(+this.userId).subscribe(
       (data) => {
         //console.log(data);
         this.executionPoints = data.results;

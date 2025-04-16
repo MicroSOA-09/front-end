@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class AuthorCouponFormComponent  implements OnInit{
 
   couponForm: FormGroup;
-  authorId: number
+  authorId: string
   minDate: Date
 
   constructor(private formBuilder: FormBuilder,private marketplaceService: MarketplaceService, private auth: AuthService, private router: Router){}
@@ -64,7 +64,7 @@ export class AuthorCouponFormComponent  implements OnInit{
             discount: discountControl.value,
             expirationDate: expirationDateControl.value,
             tourId: -1,
-            touristId: 0,
+            touristId: "0",
             authorId: this.authorId, // replace with the actual author ID
           };
     

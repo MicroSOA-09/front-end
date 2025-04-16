@@ -21,7 +21,7 @@ export class PrivateTourPointsComponent implements OnInit{
   allTourPoints : TourPoint[] = []
   userTours : Tour[] = []
   tourPointRequests : TourPointRequest[] = []
-  user:number
+  user: string
   sentRequest:TourPointRequest
   
 

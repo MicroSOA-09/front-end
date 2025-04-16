@@ -2,6 +2,6 @@ export interface UserMileage {
     id: number;
     mileage: number;
     mileageByMonth: number;
-    userId: number;
+    userId: string;
     username: string;
   }

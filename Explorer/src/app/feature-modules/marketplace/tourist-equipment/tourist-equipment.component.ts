@@ -30,8 +30,7 @@ export class TouristEquipmentComponent implements OnInit {
   getLoggedInUser(){
     this.authService.user$.subscribe(user=>{
       if(user){
-        this.loggedInUser = user.id;
-        console.log('Id ulogovanog: '+this.loggedInUser);
+        this.loggedInUser = +user.id;
       }
     })
   }

@@ -7,6 +7,6 @@ export interface TourReview {
   attendanceDate: Date;
   reviewDate: Date;
   images: string[];
-  touristId: number;
+  touristId: string;
   tourId: number;
 }

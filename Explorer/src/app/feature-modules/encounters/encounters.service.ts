@@ -56,7 +56,7 @@ export class EncountersService {
     return this.http.delete<Encounter>(environment.apiHost + 'encounters/' + encounter.id);
   }
 
-  getByUser(userId: number): Observable<EncounterExecution>{
+  getByUser(userId: string): Observable<EncounterExecution>{
     const url = `${environment.apiHost+ 'encounterExecution/getActive'}/${userId}`;
     
     return this.http.get<EncounterExecution>(url);
@@ -78,7 +78,7 @@ export class EncountersService {
     return this.http.get<boolean>(url);
   }
 
-  completeExecution(userId: number): Observable<EncounterExecution> {
+  completeExecution(userId: string): Observable<EncounterExecution> {
     console.log("usao u servis")
     const url = `${environment.apiHost}encounterExecution/completeExecution/${userId}`;
     console.log(url);

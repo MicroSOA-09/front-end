@@ -222,7 +222,7 @@ export class MarketplaceService {
     );
   }
 
-  getGuideProblems(id: number): Observable<PagedResults<Problem>> {
+  getGuideProblems(id: string): Observable<PagedResults<Problem>> {
     return this.http.get<PagedResults<Problem>>(
       environment.apiHost + 'problem/byGuide/' + id
     );
@@ -241,13 +241,13 @@ export class MarketplaceService {
     );
   }
 
-  isThereUnreadMessage(id: number): Observable<number> {
+  isThereUnreadMessage(id: string): Observable<number> {
     return this.http.get<number>(
       environment.apiHost + 'problem/byUnreadMessages/' + id
     );
   }
 
-  getTourstProblems(id: number): Observable<PagedResults<Problem>> {
+  getTourstProblems(id: string): Observable<PagedResults<Problem>> {
     return this.http.get<PagedResults<Problem>>(
       environment.apiHost + 'problem/byTourist/' + id
     );
@@ -284,7 +284,7 @@ export class MarketplaceService {
     );
   }
 
-  getProblemWithClosestDeadline(id: number): Observable<Problem> {
+  getProblemWithClosestDeadline(id: string): Observable<Problem> {
     return this.http.get<Problem>(
       environment.apiHost + 'problem/closestDeadline/' + id
     );
@@ -350,7 +350,7 @@ export class MarketplaceService {
     return this.http.get<Tour>('http://localhost:4200/api/marketplace/selectedTour/' + id);
   } 
 
-  getShoppingCart(touristId: number): Observable<ShoppingCart>{
+  getShoppingCart(touristId: string): Observable<ShoppingCart>{
     return this.http.get<ShoppingCart>('http://localhost:4200/api/shoppingcart/'+touristId);
   }
 
@@ -433,7 +433,7 @@ export class MarketplaceService {
     return this.http.post<Coupon>(environment.apiHost + 'authoring/coupon', coupon)
   }
 
-  getCouponsByAuthor(authorId: number): Observable<Coupon[]> {
+  getCouponsByAuthor(authorId: string): Observable<Coupon[]> {
     return this.http.get<Coupon[]>(environment.apiHost + 'authoring/coupon/' + authorId.toString())
   }
 

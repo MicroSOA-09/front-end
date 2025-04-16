@@ -44,7 +44,7 @@ export class ApplyFormComponent implements OnInit {
     var competitionApply: CompetitionApply = {
       competitionId: this.competitionId || 0,
       imageUrl: this.imageUrl || '',
-      userId: this.user?.id || 0,
+      userId: this.user?.id || "ads",
       numLikes: 0,
     };
 

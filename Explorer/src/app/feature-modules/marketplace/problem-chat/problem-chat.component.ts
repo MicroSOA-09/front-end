@@ -70,7 +70,7 @@ export class ProblemChatComponent implements OnChanges{
       content: this.messageControl.value || "",
       isRead: false,
       problemId: this.problem.id || 0,
-      idSender: this.user.id || 0
+      idSender: this.user.id || "0"
     }
 
     this.service.addMessage(message).subscribe({

@@ -16,7 +16,7 @@ export class GuideReviewComponent implements OnInit {
   selectedGuideReview: GuideReview;
   shouldEdit: boolean;
   shouldRenderGuideReviewForm: boolean = false;
-  user: number;
+  user: string;
 
   constructor(private service: MarketplaceService, private authService: AuthService) { }
 

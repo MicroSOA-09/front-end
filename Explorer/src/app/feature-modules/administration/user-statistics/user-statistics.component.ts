@@ -9,7 +9,7 @@ import { UserMileage } from '../model/user-statistics.model';
   styleUrls: ['./user-statistics.component.css']
 })
 export class UserStatisticsComponent implements OnInit{
-  userId : number;
+  userId : string;
   sortedByAllTimeMileages: UserMileage[] = [];
   sortedByMonthMileages: UserMileage[] = [];
   userMileages: UserMileage[] = [];

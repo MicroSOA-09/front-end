@@ -16,7 +16,7 @@ import { TourPurchaseToken } from '../model/TourPurchaseToken.model';
 })
 export class ToursShowComponent {
   loggedInUser: User = {
-    id: 0,
+    id: "asda",
     username: '',
     role: '',
   };
@@ -42,7 +42,7 @@ export class ToursShowComponent {
     this.getAllReviews();
     this.getLoggedInUser();
     this.getAllTokens();
-    this.getAllTours();
+    // this.getAllTours();
     this.getExecutions();
   }
   getAllReviews() {
@@ -53,25 +53,25 @@ export class ToursShowComponent {
     });
   }
 
-  getAllTours() {
-    this.marketplaceService.getAllTours().subscribe({
-      next: (response) => {
-        this.tours = response.results;
+  // getAllTours() {
+  //   this.marketplaceService.getAllTours().subscribe({
+  //     next: (response) => {
+  //       this.tours = response.results;
 
-        //ako vec nije ostavio recenziju
-        this.tours = this.tours.filter((tour) => {
-          return !tour.tourReviews.some(
-            (review) => review.touristId === this.loggedInUser.id
-          );
-        });
+  //       //ako vec nije ostavio recenziju
+  //       this.tours = this.tours.filter((tour) => {
+  //         return !tour.tourReviews.some(
+  //           (review) => review.touristId === this.loggedInUser.id
+  //         );
+  //       });
 
-        this.filterPurchasedTours();
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
-  }
+  //       this.filterPurchasedTours();
+  //     },
+  //     error: (error) => {
+  //       console.log(error);
+  //     },
+  //   });
+  // }
 
   rateTour(tour: ReviewTour) {
     this.getTourExecution(tour);

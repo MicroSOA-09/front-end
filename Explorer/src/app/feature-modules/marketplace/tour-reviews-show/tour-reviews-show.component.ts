@@ -20,7 +20,7 @@ export class TourReviewsShowComponent {
   _observableList: BehaviorSubject<TourReview[]> = new BehaviorSubject<TourReview[]>([]);
   userReviews: any[];
   loggedInUser: User={
-    id:0,
+    id:"s",
     username:'',
     role: ''
   }

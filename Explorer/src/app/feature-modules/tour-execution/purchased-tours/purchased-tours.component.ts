@@ -43,7 +43,7 @@ interface ExtendedTour extends Tour {
 export class PurchasedToursComponent implements OnInit{
   
   tours: ExtendedTour[] = []
-  touristId: number
+  touristId: string
   tokens: TourPurchaseToken[] = []
   selectedTours: Tour[] = []
   tourNames : String []
@@ -302,7 +302,7 @@ styles: [`
         description: 'opis',
         status: Status.Draft,
         difficultyLevel: this.calculateDifficultyLevel(),
-        UserId: this.tokenStorage.getUserId(),
+        userId: this.tokenStorage.getUserId(),
         price: this.calculatePrice(),
         tags: ['xzy', 'abc'],
         tourPoints: this.makeTourPointsForAll(),

@@ -131,27 +131,27 @@ export class TourPointFormComponent implements OnChanges, OnInit {
     });
 
     var tourCharacteristic = {
-      distance: +this.totalDistance.toFixed(2),
+      distance: this.totalDistance.toFixed(2),
       duration: this.totalTime,
       transportType: this.yourFormGroup.value.selectedTransport,
     };
 
-    if (this.tour.id !== undefined) {
-      this.service
-        .setTourCharacteristics(this.tour.id, tourCharacteristic)
-        .subscribe({
-          next: () => {
-            this.closeTourPointForm.emit();
-            this.openSnackBar("Characteristics set successfully.");
-          },
-          error(err: any) {
-            console.log(tourCharacteristic);
-            console.log(err);
-          },
-        });
-    } else {
-      console.error('Nema dostupnog ID-ja za turu.');
-    }
+    // if (this.tour.id !== undefined) {
+    //   this.service
+    //     .setTourCharacteristics(this.tour.id, tourCharacteristic)
+    //     .subscribe({
+    //       next: () => {
+    //         this.closeTourPointForm.emit();
+    //         this.openSnackBar("Characteristics set successfully.");
+    //       },
+    //       error(err: any) {
+    //         console.log(tourCharacteristic);
+    //         console.log(err);
+    //       },
+    //     });
+    // } else {
+    //   console.error('Nema dostupnog ID-ja za turu.');
+    // }
   }
   updateTourPoint(): void {
     const tourPoint: TourPoint = {

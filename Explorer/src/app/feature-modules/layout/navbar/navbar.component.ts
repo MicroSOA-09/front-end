@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogout(): void {
+    console.log("LOGOUT")
     this.authService.logout();
   }
 }

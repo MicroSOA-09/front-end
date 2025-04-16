@@ -102,7 +102,7 @@ export class TourAuthoringService {
   }
 
   getTourByGuide(
-    userId: number,
+    userId: string,
     page: number,
     pageSize: number
   ): Observable<PagedResults<Tour>> {

@@ -30,7 +30,7 @@ export class TourSaleComponent {
 
   ngOnInit(): void {
     this.authService.user$.subscribe(user => {
-      this.user = user.id;
+      this.user = +user.id;
       console.log(this.user);
     });
     this.getTourSales(this.user);

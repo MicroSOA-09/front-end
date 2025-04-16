@@ -3,5 +3,5 @@ export interface Club {
     name: string,
     description: string,
     image: string,
-    ownerId?: number
+    ownerId?: string
 }

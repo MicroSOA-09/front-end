@@ -1,7 +1,7 @@
 export interface GuideReview {
     id?: number,
-    userId: number,
-    guideId: number,
+    userId: string,
+    guideId: string,
     rating: number,
     comment?: string,
     submissionDate: Date

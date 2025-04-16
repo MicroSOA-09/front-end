@@ -19,7 +19,7 @@ import {GoogleAnalyticsService} from "../../../infrastructure/google-analytics/g
 })
 export class PublicTourPointRequestComponent implements OnInit {
 
-  user:number
+  user:string
   requests : TourPointRequest[] =[]
   publicTourPoint: PublicTourPoint
   tourPointsInRequests: TourPoint[] = []
@@ -113,7 +113,7 @@ export class PublicTourPointRequestComponent implements OnInit {
     console.log("Usao");
     this.requests.forEach(request => {
       const tp = this.tourPointsInRequests.find(tp => tp.id === request.tourPointId);
-      const author = this.authors.find(author => author.id === request.authorId);
+      const author = this.authors.find(author => +author.id == request.authorId);
 
       if (tp && author) {
         console.log("Pronađeni su odgovarajući podaci za zahtjev", request.id);

@@ -1,6 +1,6 @@
 export interface UserPosition {
     id?: number,
-    userId: number,
+    userId: string,
     latitude:number,
     longitude:number
 }

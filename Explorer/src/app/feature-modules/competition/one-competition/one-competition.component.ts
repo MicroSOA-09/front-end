@@ -29,7 +29,7 @@ export class OneCompetitionComponent implements OnInit {
   shouldRenderForm: boolean = false;
   isTourist: boolean = false;
   user: User | undefined;
-  userId: number | 0;
+  userId: string | 0;
 
   constructor(private route: ActivatedRoute, private competitionService: CompetitionServiceService, private userService: AdministrationService, private router: Router, private authService: AuthService){}
 

@@ -14,19 +14,24 @@ import { Registration } from './model/registration.model';
   providedIn: 'root',
 })
 export class AuthService {
-  user$ = new BehaviorSubject<User>({ username: '', id: 0, role: '' });
+  user$ = new BehaviorSubject<User>({ username: '', id: "asd", role: '' });
 
   constructor(
     private http: HttpClient,
     private tokenStorage: TokenStorage,
     private router: Router
-  ) {}
+  ) {
+    // Proveri postojeći token pri inicijalizaciji
+    this.checkIfUserExists();
+  }
 
   login(login: Login): Observable<AuthenticationResponse> {
+    console.log("OVDE GADJA")
     return this.http
-      .post<AuthenticationResponse>(environment.apiHost + 'users/login', login)
+      .post<AuthenticationResponse>(environment.apiHost + 'auth/login', login)
       .pipe(
         tap((authenticationResponse) => {
+          console.log(authenticationResponse)
           this.tokenStorage.saveAccessToken(authenticationResponse.accessToken, authenticationResponse.id);
           this.setUser();
         })
@@ -35,7 +40,7 @@ export class AuthService {
 
   register(registration: Registration): Observable<AuthenticationResponse> {
     return this.http
-    .post<AuthenticationResponse>(environment.apiHost + 'users', registration)
+    .post<AuthenticationResponse>(environment.apiHost + 'auth/register', registration)
     .pipe(
       tap((authenticationResponse) => {
         //this.tokenStorage.saveAccessToken(authenticationResponse.accessToken, authenticationResponse.id);
@@ -47,29 +52,39 @@ export class AuthService {
   logout(): void {
     this.router.navigate(['']).then((_) => {
       this.tokenStorage.clear();
-      this.user$.next({ username: '', id: 0, role: '' });
+      this.user$.next({ username: '', id: "0", role: '' });
     });
   }
 
   checkIfUserExists(): void {
     const accessToken = this.tokenStorage.getAccessToken();
-    if (accessToken == null) {
-      return;
+    if (accessToken) {
+      this.setUser();
     }
-    this.setUser();
   }
 
   private setUser(): void {
     const jwtHelperService = new JwtHelperService();
-    const accessToken = this.tokenStorage.getAccessToken() || '';
-    const user: User = {
-      id: +jwtHelperService.decodeToken(accessToken).id,
-      username: jwtHelperService.decodeToken(accessToken).username,
-      role: jwtHelperService.decodeToken(accessToken)[
-        'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
-      ],
-    };
-    this.user$.next(user);
+    const accessToken = this.tokenStorage.getAccessToken();
+    if (!accessToken) {
+      console.log('Nema access token-a');
+      return;
+    }
+
+    try {
+      const decodedToken = jwtHelperService.decodeToken(accessToken);
+      const user: User = {
+        id: decodedToken.sub, // Koristi 'sub' za ID
+        username: decodedToken.username,
+        role: decodedToken.role // Koristi 'role' direktno iz tokena
+      };
+      user.role = user.role.toLowerCase()
+      console.log('Postavljanje korisnika:', user);
+      this.user$.next(user);
+    } catch (error) {
+      console.error('Greška pri dekodiranju tokena:', error);
+      this.tokenStorage.clear();
+    }
   }
 
   confirmRegistration(link: string): Observable<User> {

@@ -47,7 +47,7 @@ export class ShowCompetitionComponent implements OnInit{
 
   get() : void{
     if(this.user?.role == 'author'){
-      this.getAllCompetitionsByAuthorId(this.user?.id || -1)
+      this.getAllCompetitionsByAuthorId(this.user?.id || "-1")
     }
     else if(this.user?.role == 'tourist'){
       this.getAll()
@@ -73,7 +73,7 @@ export class ShowCompetitionComponent implements OnInit{
 
   }
 
-  getAllCompetitionsByAuthorId(id: number) : void {
+  getAllCompetitionsByAuthorId(id: string) : void {
     this.competitionService.getAllCompetitionsByAuthorId(id).subscribe({
       next: (result: PagedResults<Competition>) => {
         this.competitions = result.results;

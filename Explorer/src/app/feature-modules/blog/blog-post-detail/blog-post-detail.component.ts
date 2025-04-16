@@ -199,7 +199,7 @@ export class BlogPostDetailComponent implements OnInit {
   
   addComment(): void {
     const comment: BlogPostComment= {
-      userId: this.tokenStorage.getUserId() || 0 ,
+      userId: this.tokenStorage.getUserId(),
       username: "",
       blogId: this.post.id,
       text: this.commentForm.value.text || "",
@@ -212,11 +212,11 @@ export class BlogPostDetailComponent implements OnInit {
     this.commentForm.reset();
   }
 
-  showEditDeleteButtons(commentuserId:number):boolean {
+  showEditDeleteButtons(commentuserId:string):boolean {
     return commentuserId == this.tokenStorage.getUserId();
   }
 
-  deleteComment(userId: number, dateTime: Date):void {
+  deleteComment(userId: string, dateTime: Date):void {
     console.log(userId);
     console.log(dateTime);
     console.log(this.post.id);

@@ -3,7 +3,7 @@ import { TourExecutionPosition } from "./TourExecutionPosition.model";
 
 export interface TourExecution{
     id:number;
-    userId: number;
+    userId: string;
     tourId:number;
     status: TourExecutionStatus;
     tourPoints: TourPoint[];

@@ -120,7 +120,7 @@ export class TourComponent implements OnInit {
   loadCoupons(): void {
     const userId = this.tokenStorage.getUserId();
 
-    this.service.getCouponsByAuthor(userId).subscribe({
+    this.service.getCouponsByAuthor(+userId).subscribe({
       next: (result: Coupon[]) => {
         this.coupons = result;
         console.log(this.coupons);

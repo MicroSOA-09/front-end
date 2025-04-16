@@ -84,7 +84,7 @@ export class ShoppingCartComponent {
 
   }
 
-  loadShoppingCart(userId: number): void {
+  loadShoppingCart(userId: string): void {
     this.marketplaceService.getShoppingCart(userId)
       .subscribe(cart => {
         this.shoppingCart = cart;
@@ -92,7 +92,7 @@ export class ShoppingCartComponent {
       });
   }
 
-  loadProfile(userId: number): void {
+  loadProfile(userId: string): void {
     this.adminService.getProfile(userId).subscribe({
       next: (profile: Profile) => {
         this.profile = profile

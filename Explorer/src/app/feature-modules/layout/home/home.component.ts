@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
 
   showNotification(): void {
     this.probService
-      .isThereUnreadMessage(this.user.id || 0)
+      .isThereUnreadMessage(this.user.id || "0")
       .subscribe((idProblem: number) => {
         if (idProblem != 0) {
           const toast = this.notifications.info(

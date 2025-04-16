@@ -58,7 +58,7 @@ export class TourStatisticsComponent {
   loadTours() {
     const userId = this.tokenStorage.getUserId();
 
-    this.service.findAllPurchasedToursByAuthor(userId).subscribe({
+    this.service.findAllPurchasedToursByAuthor(+userId).subscribe({
       next: (result: Tour[]) => {
         this.tour = result;
       },
@@ -71,7 +71,7 @@ export class TourStatisticsComponent {
   getNumberOfPurchasedTours(){
     const userId = this.tokenStorage.getUserId();
 
-    this.service.getNumberOfPurchasedToursByAuthor(userId).subscribe({
+    this.service.getNumberOfPurchasedToursByAuthor(+userId).subscribe({
       next: (result: number) => {
         this.numberOfPurchasedTours = result;
         console.log('Prodate: ' + this.numberOfPurchasedTours);
@@ -87,7 +87,7 @@ export class TourStatisticsComponent {
   getNumberOfStartedTours(purchased:number){
     const userId = this.tokenStorage.getUserId();
 
-    this.service.getNumberOfStartedToursByAuthor(userId).subscribe({
+    this.service.getNumberOfStartedToursByAuthor(+userId).subscribe({
       next: (result: number) => {
         this.numberOfStartedTours = result;
         console.log('Prodate: ' + this.numberOfPurchasedTours);
@@ -102,7 +102,7 @@ export class TourStatisticsComponent {
   getNumberOfCompletedTours(purchased:number,started:number){
     const userId = this.tokenStorage.getUserId();
 
-    this.service.getNumberOfCompletedToursByAuthor(userId).subscribe({
+    this.service.getNumberOfCompletedToursByAuthor(+userId).subscribe({
       next: (result: number) => {
         this.numberOfCompletedTours = result;
         console.log('Prodate: ' + this.numberOfPurchasedTours);
@@ -146,7 +146,7 @@ export class TourStatisticsComponent {
    getMaxPercentages(){
     const userId = this.tokenStorage.getUserId();
 
-    this.service.getMaxPercentage(userId).subscribe({
+    this.service.getMaxPercentage(+userId).subscribe({
       next: (result: number[]) => {
         this.maxPercentages = result;
         this.createChartForMaxPercentages(this.maxPercentages[0],this.maxPercentages[1],this.maxPercentages[2],this.maxPercentages[3]);
@@ -226,7 +226,7 @@ export class TourStatisticsComponent {
 
   getEncountersPercentage(tourId:number){
     const userId = this.tokenStorage.getUserId();
-    this.service.getTourPointEncounterPercentage(userId,tourId).subscribe({
+    this.service.getTourPointEncounterPercentage(+userId,tourId).subscribe({
       next: (result: number[]) => {
         this.encounterPercentage = result;
         this.createChartForEncounters(this.tourPointsName,this.encounterPercentage)
@@ -242,7 +242,7 @@ export class TourStatisticsComponent {
 
   getNumberOfPurchaseByTour(tourId:number){
     const userId = this.tokenStorage.getUserId();
-    this.service.getNumberOfPurchaseByTour(userId,tourId).subscribe({
+    this.service.getNumberOfPurchaseByTour(+userId,tourId).subscribe({
       next: (result: number) => {
         this.numberOfPurchaseByTour = result;
         this.getNumberOfStartingByTour(tourId,this.numberOfPurchaseByTour);
@@ -257,7 +257,7 @@ export class TourStatisticsComponent {
 
   getNumberOfStartingByTour(tourId:number,purchasing:number){
     const userId = this.tokenStorage.getUserId();
-    this.service.getNumberOfStartedByTour(userId,tourId).subscribe({
+    this.service.getNumberOfStartedByTour(+userId,tourId).subscribe({
       next: (result: number) => {
         this.numberOfStartingByTour = result;
         this.getNumberOfCompletingByTour(tourId,purchasing,this.numberOfStartingByTour);
@@ -272,7 +272,7 @@ export class TourStatisticsComponent {
   getNumberOfCompletingByTour(tourId:number,purchasing:number,starting:number){
     const userId = this.tokenStorage.getUserId();
 
-    this.service.getNumberOfCompletedByTour(userId,tourId).subscribe({
+    this.service.getNumberOfCompletedByTour(+userId,tourId).subscribe({
       next: (result: number) => {
         this.numberOfCompletingByTour = result;
         this.createChartForTour(purchasing,starting,this.numberOfCompletingByTour);
@@ -290,7 +290,7 @@ export class TourStatisticsComponent {
     const userId = this.tokenStorage.getUserId();
 
     console.log("Usaooo")
-    this.service.getVisitedTourPointPercentage(userId,tourId).subscribe({
+    this.service.getVisitedTourPointPercentage(+userId,tourId).subscribe({
       next: (result: number[]) => {
         this.percentageForTourPoints = result;
         console.log("Rez:" + this.percentageForTourPoints);

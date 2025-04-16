@@ -1,8 +1,8 @@
 // tour-execution.model.ts
 
 export interface TourExecution {
-  id: number;
-  userId: number;
+  id: string;
+  userId: string;
   tourId: number;
   status: string;
   tourPoints: TourPoint[];
@@ -53,7 +53,7 @@ export interface TourExecutionDetail {
   id: number;
   tourId: number;
   tourPoints: TourExecutionTourPoint[];
-  userId: number;
+  userId: string;
 }
 
 export interface TourExecutionTourPoint {

@@ -3,7 +3,7 @@ import { BlogPostRating } from "./blog-post-rating.model"
 
 export interface BlogPost {
     id: string,
-    authorId: number,
+    authorId: string,
     tourId:number,
     authorUsername: string | null,
     title: string,

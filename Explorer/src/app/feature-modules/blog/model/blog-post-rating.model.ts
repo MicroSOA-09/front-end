@@ -1,5 +1,5 @@
 export interface BlogPostRating {
-    userId: number,
+    userId: string,
     isPositive: boolean,
     creationTime: Date, 
 }

@@ -12,7 +12,7 @@ export class TourService {
   constructor(private http: HttpClient) {}
 
   getTourByGuide(
-    userId: number,
+    userId: string,
     page: number,
     pageSize: number
   ): Observable<PagedResults<Tour>> {

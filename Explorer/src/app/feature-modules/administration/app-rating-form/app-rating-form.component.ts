@@ -47,7 +47,7 @@ export class AppRatingFormComponent implements OnInit {
   addAppRating(): void {
 
     const appRating: AppRating = {
-      userId: this.user?.id || -1,
+      userId: this.user?.id || "-1",
       rating: parseInt(this.appRatingForm.value.rating || '1'),
       description: this.appRatingForm.value.description || '',
       dateCreated: new Date()

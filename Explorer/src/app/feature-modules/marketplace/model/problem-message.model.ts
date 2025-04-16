@@ -4,5 +4,5 @@ export interface ProblemMessage {
     content: string;
     isRead: boolean;
     problemId: number;
-    idSender: number;
+    idSender: string;
 }
